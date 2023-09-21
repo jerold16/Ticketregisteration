@@ -1,0 +1,52 @@
+#searchbox{
+          height: 40vh;
+          background-image:url(../image/colorful-bus-with-bus-top-car-with-roof-that-says-travel_410516-79453.avif) ;
+          display: flex;
+          background-size: cover;
+          background-position: center;
+          justify-content: center;
+          align-items: center;
+}
+#box{
+    display: flex;
+    border: 1px solid white;
+    border-radius: 30px;
+    background-color: rgb(252, 255, 255);
+    height: auto;
+    align-items: center;
+    padding: 0px 10px;
+}
+#input{
+    display: flex;
+    align-items: center;
+}
+#input>input::placeholder{
+    color: black;
+}
+#input>input,#input>button{
+    font-size: larger;
+    padding: 1em;
+    border: none;
+    outline: none;
+    background: inherit;
+}
+#input>button{
+    background-color: red;
+    border: none;
+    height: 3em;
+    border-radius: 30px;
+    margin: 6px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+#input>input[type="date"]{
+    font-family: "Roboto Mono",monospace;
+    border: none;
+    color: #7c7b7b;
+    border-radius: 5px;
+}
+#errorpage{
+    display: flex;
+    flex-direction: column;
+}

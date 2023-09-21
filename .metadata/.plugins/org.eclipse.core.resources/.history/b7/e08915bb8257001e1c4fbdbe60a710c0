@@ -1,0 +1,23 @@
+package org.JTravels.Reservation_Api.controller;
+
+import org.JTravels.Reservation_Api.Dto.Bus;
+import org.JTravels.Reservation_Api.Dto.ResponseStructure;
+import org.JTravels.Reservation_Api.service.BusService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@CrossOrigin
+public class BusController {
+	@Autowired
+	private BusService service;
+	
+	public ResponseEntity<ResponseStructure<Bus>> save(@PathVariable int id,@RequestBody Bus bus){
+		return service.save(bus, id);
+	}
+
+}

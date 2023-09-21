@@ -1,0 +1,7 @@
+package org.JTravels.Reservation_Api.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BusRepository extends JpaRepository<Bus, Integer> {
+
+}

@@ -1,0 +1,83 @@
+#adminlogin,#adregister,#Usersignin,#userregister,#busregisteration{
+    display: flex;
+    align-items: center;
+    height: 92vh;
+    justify-content: center;
+}
+#Usersignin,#adminlogin{
+    background-image: url("../image//office.jpg");
+    background-size: cover;
+}
+#adregister,#userregister{
+    background-image: url("../image//office2.jpg");
+    background-size: contain;
+}
+#busregisteration{
+    background-image: url("../image/colorful-bus-with-bus-top-car-with-roof-that-says-travel_410516-79453.avif");
+    background-size: cover;
+    background-position: center;
+}
+#form,#form2{
+    height: 30rem;
+    width: 35rem;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px rgb(14, 14, 14);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 1em;
+    padding-bottom: 3em;
+}
+#form2{
+    height: 38rem;
+    padding-bottom: 2em;
+}
+#form>input,#form2>input{
+    font-size: medium;
+    width: 60%;
+    padding: 5px;
+    padding-left: 0.6em;
+    border: none;
+    background: white;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+
+#form>button,#form2>button,#button{
+    font-size: medium;
+    padding: 9px;
+    height: 2.3em;
+    width: auto;
+    cursor: pointer;
+    color: rgb(246, 243, 239);
+    border: none;
+    background-color: black;
+    border-radius: 3px;
+}
+#form>a,#form2>a{
+    font-size: large;
+}
+#Adminnav{
+    height: 2rem;
+    background-color:  rgb(242, 248, 155);
+    display: flex;
+    justify-content: center;
+}
+#Adminnav>a{
+    text-decoration: none;
+    font-family: cursive;
+    font-size: large;
+}
+#Adminnav>a:hover{
+    color: red;
+    font-size: larger;
+}
+#buttonsection{
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    width: 50%;
+    padding: 0px 20px;
+}
