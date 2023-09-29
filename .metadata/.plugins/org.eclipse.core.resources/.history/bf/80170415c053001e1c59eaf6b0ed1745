@@ -1,5 +1,0 @@
-package org.JTravels.Reservation_Api.Dto;
-
-public class Bus {
-
-}

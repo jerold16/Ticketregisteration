@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import "../Styles/admin.css"
 import { useNavigate } from 'react-router'
 const Busregisteration = () => {
-    let admin=JSON.parse(localStorage.getItem("admin"))
+    let admin=JSON.parse(sessionStorage.getItem("admin"))
     let id=admin.id
     let [name,setName]=useState("")
     let [busnum,setNumber]=useState("")

@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "../Styles/admin.css"
 import axios from 'axios'
+
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 const AdminLogin = () => {
   let [email,setemail]=useState("")
   let [password,setpassword]=useState("")
@@ -12,12 +15,13 @@ const AdminLogin = () => {
     if(email.includes("@")){
       axios.get(`http://localhost:8080/admin/verifyemail?email=${email}&password=${password}`)
       .then((response)=>{
-        localStorage.setItem("admin",JSON.stringify(response.data.data))
-        alert("login successful")
+        toast.success("Admin login Successfull")
+        sessionStorage.setItem("admin",JSON.stringify(response.data.data))
+        
         navi("/adminland")
       })
       .catch((error)=>{
-        alert("something went wrong")
+      toast.error("Something Went Wrong...")
         console.log(error)
       })
     }
@@ -25,12 +29,13 @@ const AdminLogin = () => {
       phone=Number(email)
       axios.get(`http://localhost:8080/admin/verifyphone?phone=${phone}&password=${password}`)
       .then((response)=>{
-        localStorage.setItem("admin",JSON.stringify(response.data.data))
-        alert("login successful")
+        toast.success("Admin login Successfull")
+        sessionStorage.setItem("admin",JSON.stringify(response.data.data))
+        
         navi("/adminland")
       })
       .catch((error)=>{
-        alert("something went wrong")
+        toast.error("Something Went Wrong...")
         console.log(error)
       })
     }
@@ -44,7 +49,7 @@ const AdminLogin = () => {
                 <input type="password" onChange={(e)=>{setpassword(e.target.value)}} placeholder='Enter the password' />
                 <button onClick={login}>Sign in</button>
             <Link to={'/adminregis'}>Click here to create Account...</Link>
-            </form>
+            <ToastContainer/> </form>
         
     </div>
   )

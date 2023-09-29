@@ -1,8 +1,10 @@
 import React from 'react'
 import "../Styles/homepage.css"
+import NavBar from './NavBar'
 const HomePage = () => {
   return (
     <div className='Homepage'>
+       <NavBar/>
        <div id='districtlogo'>
        <img src="https://st.redbus.in/buslogos/country/ind/logo_group/10283.png" alt="lggo" />
        <img src="https://s3.rdbuz.com/web/images/homeV2/rtc/GSRTC.svg" alt="GSRTC_logo" />

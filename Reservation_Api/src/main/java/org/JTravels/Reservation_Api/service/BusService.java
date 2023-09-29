@@ -1,5 +1,7 @@
 package org.JTravels.Reservation_Api.service;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,5 +79,31 @@ public class BusService {
 		}
 		throw new IdNotFoundException();
 	}
-
+	public ResponseEntity<ResponseStructure<Bus>> changetiming(int id,LocalTime departure,LocalTime destination){
+		Optional<Bus> op=dao.findbyID(id);
+		ResponseStructure<Bus> res=new ResponseStructure<>();
+		if(op.isPresent()) {
+			Bus b=op.get();
+			b.setDeptime(departure);
+			b.setDestime(destination);
+			dao.update(b);
+			res.setData(b);
+			res.setMessage("Route timing has been changed");
+			res.setHttpstatus(HttpStatus.OK.value());
+			return new ResponseEntity<ResponseStructure<Bus>>(res,HttpStatus.OK);
+		}
+		throw new IdNotFoundException();
+	}
+	public ResponseEntity<ResponseStructure<Bus>> findbyid(int id){
+		Optional<Bus> op=dao.findbyID(id);
+		ResponseStructure<Bus> res=new ResponseStructure<>();
+		if(op.isPresent()) {
+			Bus b=op.get();
+			res.setData(b);
+			res.setMessage("bus has been found");
+			res.setHttpstatus(HttpStatus.OK.value());
+			return new ResponseEntity<ResponseStructure<Bus>>(res,HttpStatus.OK);
+		}
+		throw new IdNotFoundException();
+	}
 }

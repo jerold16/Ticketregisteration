@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "../Styles/admin.css"
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 const Signin = () => {
   let [email,setemail]=useState("")
   let [password,setpassword]=useState("")
@@ -12,8 +14,8 @@ const Signin = () => {
     if(email.includes("@")){
       axios.get(`http://localhost:8080/user/verifyemail?email=${email}&password=${password}`)
       .then((response)=>{
-        localStorage.setItem("user",JSON.stringify(response.data.data))
-        alert("login successful")
+        sessionStorage.setItem("user",JSON.stringify(response.data.data))
+        toast.success("User login Successfull")
         navi("/landing")
       })
       .catch((error)=>{
@@ -25,8 +27,8 @@ const Signin = () => {
       phone=Number(email)
       axios.get(`http://localhost:8080/user/verifyphone?phone=${phone}&password=${password}`)
       .then((response)=>{
-        localStorage.setItem("user",JSON.stringify(response.data.data))
-        alert("login successful")
+        sessionStorage.setItem("user",JSON.stringify(response.data.data))
+        toast.success("User login Successfull")
         navi("/landing")
       })
       .catch((error)=>{
@@ -45,7 +47,7 @@ const Signin = () => {
                 <button onClick={login}>Sign in</button>
             <Link to={'/register'}>Click here to create Account...</Link>
             </form>
-        
+        <ToastContainer/>
     </div>
   )
 }

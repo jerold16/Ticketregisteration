@@ -1,5 +1,0 @@
-package org.JTravels.Reservation_Api.dao;
-
-public class BusDao {
-
-}

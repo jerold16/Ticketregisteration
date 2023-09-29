@@ -1,0 +1,19 @@
+package org.JTravels.Reservation_Api.dao;
+
+import org.JTravels.Reservation_Api.Dto.Ticket;
+import org.JTravels.Reservation_Api.repository.TicketRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class TicketDao {
+	@Autowired
+	private TicketRepository rep;
+	public Ticket save(Ticket t) {
+		return rep.save(t);
+	}
+	public Ticket update(Ticket t) {
+		return rep.save(t);
+	}
+
+}
