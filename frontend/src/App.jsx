@@ -12,6 +12,9 @@ import Adminlanding from './AdminPage/Adminlanding'
 import Error from './Component/Error'
 import Protect from './Component/Protect'
 import AdminLogin from './Component/AdminLogin'
+import NavBar from './Component/NavBar'
+import SearchBox from './Userlanding/SearchBox'
+import Dashboard from './Component/Dashboard'
 const App = () => {
   return (
     <div>
@@ -27,6 +30,8 @@ const App = () => {
             <Route path='/landing' element={<Protect Child={LandingHome}/>}/>
             <Route path='/adminland/*' element={<Protect Child={Adminlanding}/>}/>
             <Route path='/*' element={<Error/>}/>
+            <Route path='/search' element={<SearchBox/>}/>
+            <Route path='/dash' element={<Dashboard/>}/>
         </Routes>
         </BrowserRouter>
         

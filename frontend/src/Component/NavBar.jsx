@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <div className='Navbar'>
         <div className="logo">
-             <button onClick={home}>J Travels</button>
+             <button onClick={home}>Travels</button>
         </div>
         <div className="options">
         <Link to={'/about'}> <InfoIcon id="icon1"/> About us</Link>

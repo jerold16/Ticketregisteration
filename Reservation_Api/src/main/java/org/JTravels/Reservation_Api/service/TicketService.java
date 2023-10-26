@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.JTravels.Reservation_Api.Dto.Bus;
+import org.JTravels.Reservation_Api.Dto.EmailConfiguration;
 import org.JTravels.Reservation_Api.Dto.ResponseStructure;
 import org.JTravels.Reservation_Api.Dto.Slots;
 import org.JTravels.Reservation_Api.Dto.Ticket;
@@ -26,6 +27,10 @@ public class TicketService {
 	private UserDao udao;
 	@Autowired
 	private BusDao bdao;
+	@Autowired
+	private EmailService service;
+	@Autowired
+	private EmailConfiguration config;
 	public ResponseEntity<ResponseStructure<Ticket>> BookTicket(int user_id,int bus_id,Ticket t){
 		ResponseStructure<Ticket> res=new ResponseStructure<>();
 		Optional<User> opu=udao.findbyid(user_id);
@@ -38,12 +43,35 @@ public class TicketService {
 			t.setBus(b);
 			t.setUser(u);
 			List<Slots> ls=t.getSlots();
+			
 			for(Slots s : ls) {
 				s.setTicket(t);
+				
 			}
 			udao.Update(u);
 			bdao.update(b);
-			dao.save(t);
+			dao.bookticket(t);
+			
+			
+			//email content
+			String seatnumber="";
+			String price="";
+			for(Slots s: ls) {
+				seatnumber+=s.getSeat_no()+"  ";
+				price+=String.valueOf(s.getSeat_cost())+"  ";
+			}
+			config.setTo(u.getEmail());
+			config.setSubject("Booking Confirmation");
+			config.setText("Ticket no : "+t.getTicket_no()+"\n"
+			+"Booking time : "+t.getTime_of_booking()+"\n"
+			+"Seat no : " + seatnumber +"\n"
+			+"Price of seats : "+ price+"\n"
+			+"Total amount paid : "+t.getAmnt_paid()+"\n" 
+			+"Depature place & Time : "+t.getBoarding()+" & "+t.getDeptime()+"\n"
+			+"Dropping place & Time : "+t.getDroping()+" & "+t.getDestime()+"\n"
+			+"Bus Number : "+ b.getBusnum());
+			service.sendemail(config);
+			
 			
 			//structure creation
 			res.setData(t);
@@ -57,12 +85,30 @@ public class TicketService {
     	 ResponseStructure<String> res=new ResponseStructure<>();
     	 Optional<Ticket> op=dao.findbyid(id);
     	 if(op.isPresent()) {
+    		 String email=op.get().getUser().getEmail();
+    		 config.setTo(email);
+    		 config.setSubject("Ticket Cancelation confirmation");
+    		 config.setText("Your Ticket number : "+op.get().getTicket_no()+" has been canceled."+"\n"
+    		 		+ " Refund of your ticket amount "+op.get().getAmnt_paid()+" will be initialed to your registered bank account within 5-6 working days");
+    		 service.sendemail(config);
     		 dao.cancel(id);
     		 res.setData("Ticket has been canceled");
-    		 res.setMessage("Ticket found");
+    		 res.setMessage("Mail sended");
     		 res.setHttpstatus(HttpStatus.OK.value());
     		 return new ResponseEntity<ResponseStructure<String>>(res,HttpStatus.OK);
     	 }
     	 throw new IdNotFoundException();
      }
+     public ResponseEntity<ResponseStructure<Ticket>> findbyid(int id){
+    	 ResponseStructure<Ticket> res=new ResponseStructure<>();
+    	 Optional<Ticket> op=dao.findbyid(id);
+    	 if(op.isPresent()) {
+    		 res.setData(op.get());
+    		 res.setMessage("Ticket found");
+    		 res.setHttpstatus(HttpStatus.OK.value());
+    		 return new ResponseEntity<ResponseStructure<Ticket>>(res,HttpStatus.OK);
+    	 }
+    	 throw new IdNotFoundException();
+     }
+     
 }

@@ -5,6 +5,7 @@ import axios from 'axios'
 
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import NavBar from './NavBar';
 const AdminLogin = () => {
   let [email,setemail]=useState("")
   let [password,setpassword]=useState("")
@@ -41,17 +42,20 @@ const AdminLogin = () => {
     }
   }
   return (
-    <div id="adminlogin">
+   <div>
+    <NavBar/>
+     <div id="adminlogin">
          
-            <form id='form' action="">
-                <h1>Admin Login </h1>
-                <input type="email" onChange={(e)=>{setemail(e.target.value)}} placeholder='Enter the email or phone number' />
-                <input type="password" onChange={(e)=>{setpassword(e.target.value)}} placeholder='Enter the password' />
-                <button onClick={login}>Sign in</button>
-            <Link to={'/adminregis'}>Click here to create Account...</Link>
-            <ToastContainer/> </form>
-        
-    </div>
+         <form id='form' action="">
+             <h1>Admin Login </h1>
+             <input type="email" onChange={(e)=>{setemail(e.target.value)}} placeholder='Enter the email or phone number' />
+             <input type="password" onChange={(e)=>{setpassword(e.target.value)}} placeholder='Enter the password' />
+             <button onClick={login}>Sign in</button>
+         <Link to={'/adminregis'}>Click here to create Account...</Link>
+         <ToastContainer/> </form>
+     
+ </div>
+   </div>
   )
 }
 

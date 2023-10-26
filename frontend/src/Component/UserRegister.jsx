@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "../Styles/admin.css"
 import axios from 'axios'
 import { useNavigate } from 'react-router'
+import NavBar from './NavBar'
 const UserRegister = () => {
   let navi=useNavigate()
     let [name,setname]=useState("")
@@ -24,7 +25,9 @@ const UserRegister = () => {
       })
     }
     return (
-      <div id='userregister'>
+      <div>
+        <NavBar/>
+        <div id='userregister'>
         <form id='form2' action="">
                   <h1>User Registeration </h1>
                   <input type="name" value={name} onChange={(e)=>{setname(e.target.value)}} placeholder='Enter the Name' />
@@ -36,6 +39,7 @@ const UserRegister = () => {
                   <button onClick={register}>Register</button>
               </form>
           
+      </div>
       </div>
     )
 }

@@ -4,6 +4,8 @@ import "../Styles/admin.css"
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import NavBar from './NavBar';
+import { Modal } from 'bootstrap';
 const Signin = () => {
   let [email,setemail]=useState("")
   let [password,setpassword]=useState("")
@@ -37,17 +39,21 @@ const Signin = () => {
       })
     }
   }
+  
   return (
-    <div id='Usersignin'>
-
+    <div>
+      <NavBar/>
+      <div id='Usersignin'>
             <form id='form' action="">
                 <h1>User Login </h1>
                 <input type="text" onChange={(e)=>{setemail(e.target.value)}} placeholder='Enter the email or phone number' />
                 <input type="password" onChange={(e)=>{setpassword(e.target.value)}} placeholder='Enter the password' />
+                <div id='forgot'><Link>Forgot password ?</Link></div>
                 <button onClick={login}>Sign in</button>
             <Link to={'/register'}>Click here to create Account...</Link>
             </form>
         <ToastContainer/>
+    </div>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import "../Styles/navbar.css"
 import InfoIcon from '@mui/icons-material/Info';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import { Link } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
 const UserNav = () => {
     let navi=useNavigate()
   let home=()=>{
@@ -11,17 +12,18 @@ const UserNav = () => {
   }
   let logout=()=>{
     sessionStorage.removeItem("user")
+    sessionStorage.removeItem("BusList")
   }
   return (
     <div className='Navbar'>
         <div className="logo">
-             <button onClick={home}>J Travels</button>
+             <button onClick={home}>Travels</button>
         </div>
-        <div className="options">
+        <Nav className="options">
         <Link to={'/about'}> <InfoIcon id="icon1"/> About us</Link>
         <Link to={'/contact'}><ContactSupportIcon id="icon2"/> Contact us</Link>
         <Link onClick={logout} to={'/'}>Log Out</Link>
-        </div>
+        </Nav>
     </div>
   )
 }

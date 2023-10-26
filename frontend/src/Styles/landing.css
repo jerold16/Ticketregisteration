@@ -1,6 +1,6 @@
 #searchbox{
-          height: 40vh;
-          background-image:url(../image/colorful-bus-with-bus-top-car-with-roof-that-says-travel_410516-79453.avif) ;
+          height: 50vh;
+          background-image:url(../image/busback.jpg) ;
           display: flex;
           background-size: cover;
           background-position: center;
@@ -11,7 +11,7 @@
     display: flex;
     border: 1px solid white;
     border-radius: 30px;
-    background-color: rgb(252, 255, 255);
+    background-color: rgba(251, 250, 251, 0.7);
     height: auto;
     width: 50rem;
     align-items: center;
@@ -20,23 +20,40 @@
 #input{
     display: flex;
     align-items: center;
+    padding-left: 10px;
+    background: transparent;
 }
 #input>input::placeholder{
     color: black;
 }
-#input>input,#input>button{
+#input>input{
+    font-size: larger;
+    padding: 1em;
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+}
+#searchbutton{
     font-size: larger;
     padding: 1em;
     border: none;
     outline: none;
     background: inherit;
 }
-#input>button{
+#cross{
+    margin-right: 5px;
+    cursor: pointer;
+    border: none;
+
+}
+#searchbutton{
     background-color: red;
     border: none;
     height: 3em;
     border-radius: 30px;
     margin: 6px;
+    margin-left: -9px;
     text-align: center;
     color: white;
     cursor: pointer;
@@ -50,4 +67,52 @@
 #errorpage{
     display: flex;
     flex-direction: column;
+}
+#buscard{
+    display: flex;
+    width: 95vw;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    background-color: white;
+}
+
+#buscontent{
+    display: flex;
+    width: 80vw;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 8px;
+    justify-content: space-evenly;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transition: 3ms;
+    box-shadow: 2px 2px 5px;
+}
+#buscontent:hover{
+    transform: scale(1.02);
+}
+#buscontent>img{
+    width: 10%;
+}
+#buscontent>h2{
+    width: 20%;
+}
+#layer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 70%;
+}
+#layer1,#layer2{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0px;
+    padding-right: 5px;
+}
+#layer1>h3,#layer2>h3{
+    font-weight: normal;
 }

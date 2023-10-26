@@ -35,6 +35,8 @@ public class Ticket {
 	private LocalTime destime;
 	@Column(nullable = false)
 	private double amnt_paid;
+	private String boarding;
+	private String droping;
 	@CreationTimestamp
 	private LocalDateTime time_of_booking;
 	@Column(nullable = false)

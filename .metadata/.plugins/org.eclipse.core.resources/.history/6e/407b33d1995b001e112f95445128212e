@@ -1,5 +1,0 @@
-package org.JTravels.Reservation_Api.repository;
-
-public interface TicketRepository {
-
-}

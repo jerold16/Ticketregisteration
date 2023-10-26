@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
+import NavBar from './NavBar'
 const Adminregister = () => {
   let [name,setname]=useState("")
   let [email,setemail]=useState("")
@@ -18,7 +19,9 @@ const Adminregister = () => {
           })
   }
   return (
-    <div id='adregister'>
+   <div>
+    <NavBar/>
+     <div id='adregister'>
       <form id='form2' action="">
                 <h1>Admin Registeration </h1>
                 <input type="name" value={name} onChange={(e)=>{setname(e.target.value)}} placeholder='Enter the Name' />
@@ -30,6 +33,7 @@ const Adminregister = () => {
             </form>
         
     </div>
+   </div>
   )
 }
 

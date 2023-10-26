@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,5 +25,9 @@ public class TicketController {
   @DeleteMapping("/ticket/{id}")
   public ResponseEntity<ResponseStructure<String>> cancel(@PathVariable int id){
 	  return ser.cancel(id);
+  }
+  @GetMapping("/ticket/{id}")
+  public ResponseEntity<ResponseStructure<Ticket>> findbyid(@PathVariable int id){
+	  return ser.findbyid(id);
   }
 }

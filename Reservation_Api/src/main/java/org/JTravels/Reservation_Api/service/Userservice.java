@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.JTravels.Reservation_Api.Dto.User;
 import org.JTravels.Reservation_Api.Dto.ResponseStructure;
+import org.JTravels.Reservation_Api.Exception.IdNotFoundException;
 import org.JTravels.Reservation_Api.Exception.InvalidCredentialsException;
 import org.JTravels.Reservation_Api.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,17 @@ public class Userservice {
 		res.setMessage("User has been Updated");
 		res.setHttpstatus(HttpStatus.ACCEPTED.value());
 		return new ResponseEntity<ResponseStructure<User>>(res,HttpStatus.ACCEPTED);
+	}
+	public ResponseEntity<ResponseStructure<User>> findbyid(int id){
+		ResponseStructure<User> res=new ResponseStructure<>();
+		Optional<User> op=dao.findbyid(id);
+		if(op.isPresent()) {
+		res.setData(op.get());
+		res.setMessage("User has been found");
+		res.setHttpstatus(HttpStatus.OK.value());
+		return new ResponseEntity<ResponseStructure<User>>(res,HttpStatus.OK);
+		}
+		throw new IdNotFoundException();
 	}
 	public ResponseEntity<ResponseStructure<User>> verifyUser(String email,String password){
 		ResponseStructure<User> res=new ResponseStructure<>();

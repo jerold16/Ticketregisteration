@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public class TicketDao {
 	@Autowired
 	private TicketRepository rep;
-	public Ticket save(Ticket t) {
+	public Ticket bookticket(Ticket t) {
 		return rep.save(t);
 	}
 	public Ticket update(Ticket t) {

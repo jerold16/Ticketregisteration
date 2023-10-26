@@ -21,7 +21,7 @@ public class Bus {
 	@Column(nullable = false)
 	private String name;
 	@Column (name = "depature_time")
-	private LocalTime deptime;
+	private String deptime;
 	@Column(nullable = false,unique = true)
 	private String busnum;
 	@Column(nullable = false,name="from_loc")
@@ -33,7 +33,10 @@ public class Bus {
 	@Column(nullable = false,name="number_of_seats" )
 	private int nos;
 	@Column (name = "destination_time")
-	private LocalTime destime;
+	private String destime;
+	private String journey_hrs;
+	private String category;
+	private String imageurl;
 	@ManyToOne
 	@JoinColumn
 	@JsonIgnore

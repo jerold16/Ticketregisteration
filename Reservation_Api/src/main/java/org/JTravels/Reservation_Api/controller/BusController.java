@@ -43,8 +43,12 @@ public class BusController {
 		return service.FindbyRoutes(from, to);
 	}
 	@PutMapping("/bus/timing/{id}")
-	public ResponseEntity<ResponseStructure<Bus>> changetiming(@PathVariable int id,@RequestParam LocalTime departure,@RequestParam LocalTime destination){
+	public ResponseEntity<ResponseStructure<Bus>> changetiming(@PathVariable int id, @RequestParam String departure,@RequestParam String destination){
 		return service.changetiming(id, departure, destination);
+	}
+	@PutMapping("/bus/things/{id}")
+	public ResponseEntity<ResponseStructure<Bus>> changethings(@PathVariable int id,@RequestParam String hrs,@RequestParam String departure,@RequestParam String destination,@RequestParam String imageurl,@RequestParam String category){
+		return service.changetimingandcatogeries(id,hrs, 	 departure, destination, imageurl, category);
 	}
 	
 }

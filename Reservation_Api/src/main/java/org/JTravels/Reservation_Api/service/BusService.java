@@ -79,7 +79,7 @@ public class BusService {
 		}
 		throw new IdNotFoundException();
 	}
-	public ResponseEntity<ResponseStructure<Bus>> changetiming(int id,LocalTime departure,LocalTime destination){
+	public ResponseEntity<ResponseStructure<Bus>> changetiming(int id,String departure,String destination){
 		Optional<Bus> op=dao.findbyID(id);
 		ResponseStructure<Bus> res=new ResponseStructure<>();
 		if(op.isPresent()) {
@@ -101,6 +101,24 @@ public class BusService {
 			Bus b=op.get();
 			res.setData(b);
 			res.setMessage("bus has been found");
+			res.setHttpstatus(HttpStatus.OK.value());
+			return new ResponseEntity<ResponseStructure<Bus>>(res,HttpStatus.OK);
+		}
+		throw new IdNotFoundException();
+	}
+	public ResponseEntity<ResponseStructure<Bus>> changetimingandcatogeries(int id,String hrs,String departure,String destination,String imageurl,String category){
+		Optional<Bus> op=dao.findbyID(id);
+		ResponseStructure<Bus> res=new ResponseStructure<>();
+		if(op.isPresent()) {
+			Bus b=op.get();
+			b.setJourney_hrs(hrs);
+			b.setDeptime(departure);
+			b.setDestime(destination);
+			b.setImageurl(imageurl);
+			b.setCategory(category);
+			dao.update(b);
+			res.setData(b);
+			res.setMessage("bus has been updated");
 			res.setHttpstatus(HttpStatus.OK.value());
 			return new ResponseEntity<ResponseStructure<Bus>>(res,HttpStatus.OK);
 		}

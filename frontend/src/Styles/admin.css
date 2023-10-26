@@ -1,16 +1,15 @@
 #adminlogin,#adregister,#Usersignin,#userregister,#busregisteration{
     display: flex;
     align-items: center;
-    height: 92vh;
+    height: 91vh;
     justify-content: center;
 }
 #Usersignin,#adminlogin{
-    background-image: url("../image//office.jpg");
-    background-size: cover;
+    /* background: linear-gradient(rgb(225, 222, 222),rgb(7, 4, 4)); */
 }
 #adregister,#userregister{
-    background-image: url("../image//office2.jpg");
-    background-size: contain;
+    /* background: linear-gradient(rgb(161, 44, 44),rgb(115, 104, 7)); */
+
 }
 #busregisteration{
     background-image: url("../image/colorful-bus-with-bus-top-car-with-roof-that-says-travel_410516-79453.avif");
@@ -32,7 +31,26 @@
 }
 #form2{
     height: 38rem;
+    width: 40rem;
     padding-bottom: 2em;
+}
+#input{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: yellowgreen; */
+    
+}
+#input>div>input{
+    margin: 2rem;
+    font-size: medium;
+    width: 80%;
+    padding: 5px;
+    padding-left: 0.6em;
+    border: none;
+    background: white;
+    border-bottom: 2px solid black;
+    outline: none;
 }
 #form>input,#form2>input{
     font-size: medium;
@@ -80,4 +98,9 @@
     height: auto;
     width: 50%;
     padding: 0px 20px;
+}
+#forgot{
+    width: 70%;
+    display: flex;
+    justify-content: end;
 }
